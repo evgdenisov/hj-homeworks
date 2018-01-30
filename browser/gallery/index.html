@@ -16,9 +16,39 @@
     </p>
 
     <div class="article-gallery">
-      <img id="currentPhoto" src="i/spinner.gif" alt="">
+      <img id="currentPhoto" src="i/breuer-building.jpg" alt="">
       <button id="prevPhoto">Назад</button>
       <button id="nextPhoto">Вперед</button>
+      <script>
+        var position = 0;
+        var currentPhoto = document.getElementById('currentPhoto');
+        var photoArr = [ 'i/breuer-building.jpg', 'i/guggenheim-museum.jpg', 'i/headquarters.jpg', 'i/IAC.jpg', 'i/new-museum.jpg'];
+        var prevBtn = document.getElementById('prevPhoto');
+        var nextBtn = document.getElementById('nextPhoto');
+        prevBtn.onclick = function () {
+          console.log(`-`)
+          console.log(position)
+          position -= 1;
+          if (position < 0) {
+            position = photoArr.length - 1;
+          }
+          console.log(position);
+          console.log(`-`)
+          currentPhoto.src = photoArr[position]; 
+        }
+        nextBtn.onclick = function () {
+          console.log(`-`)
+          console.log(position)
+          position += 1;
+          if (position >= photoArr.length) {
+            position = 0;
+            currentPhoto.src = photoArr[position];
+          }
+          console.log(position);
+          console.log(`-`)
+          currentPhoto.src = photoArr[position]; 
+        }
+      </script>
     </div>
 
     <div class="article-text">
