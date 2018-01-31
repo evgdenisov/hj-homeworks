@@ -12,18 +12,7 @@
   <section class="product-item">
     <div class="product-gallery">
       <img src="i/airmax-jump.png" alt="" id="slider">
-      <script>
-        let img = document.getElementById('slider');
-        let step = 1;
-        let imgArr = ['i/airmax-jump.png', 'i/airmax-on-foot.png', 'i/airmax-playground.png','i/airmax-top-view.png', 'i/airmax.png']
-        setInterval (() => {
-          img.src = imgArr[step]
-          step += 1;
-          if (step == imgArr.length) {
-            step = 0;
-          }
-        }, 5000)
-      </script>
+      <script src= "./js/fiveSecChange.js"></script>
     </div>
     <div class="product-data">
       <p class="product-firm">Nike</p>
