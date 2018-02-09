@@ -1,4 +1,4 @@
-'use strick'
+'use strict'
 document.addEventListener('keypress', (event) => {
     if (event.code == 'KeyT' && event.altKey && event.ctrlKey) {
         document.getElementsByTagName('nav')[0].classList.toggle('visible');
