@@ -1,4 +1,4 @@
-'use strick'
+'use strict'
 let miniPicks = document.getElementsByTagName('a');
 
 Array.from(miniPicks).forEach(miniPicture => {
