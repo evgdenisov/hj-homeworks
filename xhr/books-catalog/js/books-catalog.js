@@ -17,5 +17,3 @@ function onLoad() {
                     '<img src="' + book.cover.small + '"></img></li>';
     });
 }
-
-document.getElementById('content')
