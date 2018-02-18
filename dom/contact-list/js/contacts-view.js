@@ -1,11 +1,12 @@
 'use strict'
 let loadedContacts = JSON.parse(loadContacts());
-
-document.querySelector('.contacts-list').innerHTML = '';
+let contactsList = document.querySelector('.contacts-list');
+let contactsListHTML = '';
+contactsList.innerHTML = '';
 
 loadedContacts.forEach(function(element) {
-
-    document.querySelector('.contacts-list').innerHTML += '<li data-email="' + element.email + '" data-phone="'
+    contactsListHTML += '<li data-email="' + element.email + '" data-phone="'
      + element.phone +'"><strong>' + element.name + '</strong></li>';
 });
 
+contactsList.innerHTML = contactsListHTML;
