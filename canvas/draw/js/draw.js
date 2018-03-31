@@ -6,6 +6,7 @@ let counter = 0;
 let shift = false;
 let lineWidth = 'down';
 let size = 100;
+let status = 'drawOFF';
 
 function resize() {
     canvas.width = document.body.clientWidth;
@@ -13,6 +14,9 @@ function resize() {
 }
 
 function tick() {
+    if (status == 'drawOFF') {
+        return;
+    } 
     if (shift) {
         if (counter == 0) {
             counter = 359;
@@ -71,11 +75,14 @@ document.addEventListener('keyup', (event) => {
 window.addEventListener('resize', resize);
 
 canvas.addEventListener('mousedown', (event) => {
+    status = 'draw';
+    tick();
     draw(event);
     canvas.addEventListener('mousemove', draw);
 });
 
 canvas.addEventListener('mouseup', (event) => {
+    status = 'drawOFF';
     canvas.removeEventListener('mousemove', draw);
 });
 
@@ -87,5 +94,11 @@ canvas.addEventListener('dblclick', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 })
 
-tick();
+
 resize();
+
+/* 1.  Фигурки такие размытые, так как canvas имеет стандартный размер 300х150px, а в нашем случае элемент имеет id="wall", к которому применяются следующие css свойства:
+  width: 100%;
+  height: 100%;
+2. Такая траектория крестиков получилась потому, что я менял их позиции не используя предоставленные функции времени.
+ */
