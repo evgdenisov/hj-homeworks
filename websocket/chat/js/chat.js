@@ -40,11 +40,8 @@ document.querySelector('.message-submit').addEventListener('click', (event) => {
     document.querySelector('.message-input').value = '';
 });
 
-connection.addEventListener('message', () => {
-     console.log(event.data)
+connection.addEventListener('message', (event) => {
      if (event.data !== '...') {
-        let loading = content.querySelector('.loading');
-        content.removeChield(loading);
         let content = {};
         content.text = event.data;
         content.from = 'partner';
