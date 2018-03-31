@@ -3,10 +3,13 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 const PI = Math.PI;
-ctx.strokeStyle = 'white';
 const amount = randomInt(50, 200);
 const crosses = [];
 const circles = [];
+
+canvas.height = document.body.clientHeight;
+canvas.width = document.body.clientWidth;
+ctx.strokeStyle = 'white';
 
 class Item {
     constructor() {
@@ -42,16 +45,12 @@ class CrossItem extends Item {
         super();
         this.half = this.size * 10;
         this.angle = Math.round(random(0, 2 * PI));
-        this.angleSpeed = Math.round(random(-0.2, 0.2) * 10) / 10;
-    }
-    updatePosition() {
-        this.angle += this.angleSpeed;
+        this.angleSpeed = Math.round(random(-0.2, 0.2) * 10) / 1000;
     }
     drawCross() { 
         ctx.save();
         ctx.beginPath();
         ctx.lineWidth = this.lineWidth;
-        ctx.rotate(this.angle);
         ctx.moveTo(this.x, this.y - this.half);
         ctx.lineTo(this.x, this.y + this.half);
         ctx.moveTo(this.x - this.half, this.y);
@@ -111,7 +110,17 @@ for (let i = 0; i < amount / 2; i++) {
 }
 for (let i = 0; i < amount / 2; i++) {
     const item = new CrossItem;
+    if (Math.random() < 0.5) {
+        item.nextPoint = nextPointOne;
+    }
+    else {
+        item.nextPoint = nextPointTwo;
+    }
     crosses.push(item);
 }
 
 draw();
+
+document.addEventListener('click', (event) => {
+    console.log(event)
+})
